@@ -1,0 +1,21 @@
+.all_products_pagination{
+    margin: 0 auto;
+}
+
+.login_form, .forget_password_form, .reset_password_form, .signup_form, .track_order_form, .edit_profile_form{
+    margin: 0 auto;
+}
+
+.profile_img, .profile_info, .order_success_info, .review_img_div{
+    text-align: center;
+}
+
+
+.product_img{
+    max-height: 200px;
+}
+
+.review_img{
+    width: 150px;
+    height: 150px;
+}
