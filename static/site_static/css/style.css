@@ -12,7 +12,8 @@
 
 
 .product_img{
-    max-height: 200px;
+    height: 180px;
+    width: auto;
 }
 
 .review_img{

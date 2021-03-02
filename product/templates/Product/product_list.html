@@ -82,7 +82,7 @@
                         <img class="product_img card-img-top" src="{% static 'site_static/img/default.png' %}" alt="Card image cap">
                       {% endif %}
                       <div class="card-body">
-                        <h5 class="card-title">{{product}}</h5>
+                        <h5 class="card-title"><a href="{% url 'products:product_detail' product.id %}"> {{product}}</a></h5>
                         <p class="card-text">{{product.PRDDesc}}</p>
                         <a href="#" class="btn btn-primary">Add To Cart</a>
                       </div>
@@ -95,18 +95,43 @@
 
     <div class="container">
         <div class="row">
+          
+          {% if product_list.has_other_pages %}
+            
+          
+            
             <div class="all_products_pagination">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  
+                  {% if product_list.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{product_list.previous_page_number}}">Previous</a></li>
+                  {% else %}
+                    <li class="disables"></li>
+                  {% endif %}
+                    
+                  {% for pages in product_list.paginator.page_range %}
+                    
+                    {% if product_list.number == pages %}
+                      <li class="page-item"><a class="page-link" href="#">{{pages}}</a></li>
+                    {% else %}
+                      <li class="page-item"><a class="page-link" href="?page={{pages}}">{{pages}}</a></li>
+                    {% endif %}
+                      
+                  {% endfor %}
+                  
+                  
+                  {% if product_list.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ product_list.next_page_number }}">Next</a></li>
+                  {% else %}
+                    <li class="page-disables"></li>
+                  {% endif %}
+                    
+                  
                 </ul>
             </nav>
             </div>
-            
+          {% endif %}
         </div>
     </div>
     <!-- Optional JavaScript -->

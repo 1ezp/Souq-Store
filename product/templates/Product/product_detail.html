@@ -57,13 +57,17 @@
         <div class="row">
 
             <div class="col-md-6">
-                <img class="card-img-top" src="img/product.svg" alt="Card image cap">
+              {% if product_detail.PRDImage %}
+                <img class="card-img-top" src="{{product_detail.PRDImage.url}}" alt="Card image cap">
+              {% else %}
+                <img class="card-img-top" src="{% static 'site_static/img/default.png' %}" alt="Card image cap">
+              {% endif %}
+                
             </div>
             <div class="col-md-6">
-                <h1>Product Title</h1>
-                <h4>Product Category</h4>
+                <h1>{{product_detail.PRDName}}</h1>
+                <h4>{{product_detail.PRDCategory}}</h4>
 
-                <p>item Variant</p>
                 <div class="">
                     <form>
                         <div class="form-group">
@@ -79,7 +83,7 @@
 
         <div class="row mt-5">
           <h3>Product Description</h3>
-            <p class="p-3">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+            <p class="p-3">{{product_detail.PRDDesc}}</p>
         </div>
     </div>
 
